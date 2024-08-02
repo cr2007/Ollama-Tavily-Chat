@@ -7,7 +7,6 @@ import streamlit as st
 import time
 import requests
 import os
-from os import listdir, system
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -21,7 +20,7 @@ if "TAVILY_API_KEY" not in os.environ:
                             key="t_api_key")
     if api_key:
         if api_key.startswith("tvly-"):
-            system(f'echo "TAVILY_API_KEY={str(api_key)}" >> .env')
+            os.system(f'echo "TAVILY_API_KEY={str(api_key)}" >> .env')
             api_key_placeholder.empty()
             load_dotenv()
         else:
